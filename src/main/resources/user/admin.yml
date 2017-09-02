@@ -1,0 +1,3 @@
+userName: username@example.com
+password: yourPassword
+env: DEV
