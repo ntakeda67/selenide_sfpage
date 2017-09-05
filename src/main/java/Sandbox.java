@@ -2,6 +2,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import org.nt67.selenide.sf.AppLog;
 import org.nt67.selenide.sf.conf.UserConfiguration;
 import org.nt67.selenide.sf.page.Login;
+import org.nt67.selenide.sf.page.SetupHome;
 import org.nt67.selenide.sf.user.SFUser;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -17,7 +18,9 @@ public class Sandbox {
         loadProperty();
         WebDriverRunner.setWebDriver(new FirefoxDriver(new FirefoxOptions().addArguments("-connect-existing").addPreference("-marionette-port", 57501)));
         SFUser user = new UserConfiguration("./user/admin.yml").get();
+        new SetupHome().go();
         new Login(user).doLogin();
+
     }
 
     private static void loadProperty(){
